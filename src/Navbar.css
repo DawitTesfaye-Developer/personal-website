@@ -1,0 +1,49 @@
+/* Light theme styles */
+.light-theme {
+  background-color: white; /* Background for the light theme */
+  color: black; /* Text color for the light theme */
+}
+
+/* Dark theme styles */
+.dark-theme {
+  background-color: black; /* Background for the dark theme */
+  color: white; /* Text color for the dark theme */
+}
+
+/* Theme-specific button styles */
+.light-theme .btn {
+  background-color: #f0f0f0;
+  color: black;
+}
+
+.dark-theme .btn {
+  background-color: #333;
+  color: white;
+}
+
+/* Navbar styling */
+.light-theme .navbar {
+  background-color: #e3f2fd;
+  color: black;
+}
+
+.dark-theme .navbar {
+  background-color: #333;
+  color: white;
+}
+
+/* Add hover effects for better user experience */
+.nav-link:hover {
+  opacity: 0.7;
+}
+
+/* Any additional components you want to style differently */
+.light-theme .card {
+  background-color: #fafafa;
+  color: black;
+}
+
+.dark-theme .card {
+  background-color: #444;
+  color: white;
+}

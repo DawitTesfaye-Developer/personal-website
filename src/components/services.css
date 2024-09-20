@@ -1,0 +1,58 @@
+:root {
+  --primary-color: #3498db;
+  --success-color: #27ae60;
+  --warning-color: #f39c12;
+  --purple-color: #8e44ad;
+  --blue: #3498db;
+  --green: #27ae60;
+  --yellow: #f39c12;
+  --purple: #8e44ad;
+  --white: #ffffff;
+  --text-color: #ffffff;
+  --light-gray: rgba(255, 255, 255, 0.1); /* Semi-transparent background for cards */
+}
+
+.background-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Dark transparent background */
+  z-index: -1;
+}
+
+.services-section {
+  position: relative;
+  z-index: 1;
+}
+
+.service-card {
+  background-color: var(--light-gray); /* Semi-transparent background */
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Visible border shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.4); /* Border to enhance the card's shape */
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+}
+
+.card-title, .card-text {
+  color: var(--white); /* White text */
+}
+
+.card-body {
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+i {
+  transition: color 0.3s ease;
+}
+
+.service-card:hover i {
+  color: var(--primary-color);
+}
