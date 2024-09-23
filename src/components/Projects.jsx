@@ -2,8 +2,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FaHtml5, FaCss3Alt, FaJs ,FaReact} from 'react-icons/fa'
-
+import { FaHtml5, FaCss3Alt, FaJs ,FaReact, FaAndroid, FaPaintBrush, FaCode } from 'react-icons/fa';
 
 // Keyframes for background color movement
 const backgroundColorMovement = keyframes`
@@ -97,7 +96,6 @@ const Card = styled.div`
   }
 `;
 
-
 const CardTitle = styled.h5`
   font-weight: 700; // Bold text
   font-size: 1.25rem; // Font size
@@ -105,39 +103,51 @@ const CardTitle = styled.h5`
 
 const CardText = styled.p`
   font-size: 1rem; // Font size
-  
 `;
 
 const StyledList = styled.ul`
-  list-style-type:none;
+  list-style-type: none;
+`;
 
-`
 const StyledListItem = styled.li`
-  float:left;
+  float: left;
   padding: 3px;
+`;
 
-  `;
 const StyledIconHtml = styled(FaHtml5)`
    font-size: 2rem;
-   color:#e34f26
+   color: #e34f26;
 `;
+
 const StyledIconCSS = styled(FaCss3Alt)`
    font-size: 2rem;
-   color:#1572b6
+   color: #1572b6;
 `;
+
 const StyledIconJs = styled(FaJs)`
    font-size: 2rem;
-   color:#f7df1e;
+   color: #f7df1e;
 `;
+
 const StyledIconReact = styled(FaReact)`
    font-size: 2rem;
-    color: #61dafb;
+   color: #61dafb;
 `;
 
+const StyledIconAndroid = styled(FaAndroid)`
+   font-size: 2rem;
+   color: #a4c639;
+`;
 
+const StyledIconUxUi = styled(FaPaintBrush)`
+   font-size: 2rem;
+   color: #ff1493;
+`;
 
-
-
+const StyledIconWebDesign = styled(FaCode)`
+   font-size: 2rem;
+   color: #4b0082;
+`;
 
 const Projects = () => {
   return (
@@ -145,86 +155,65 @@ const Projects = () => {
       <div className="container">
         <h2 className="text-center mb-4">Projects</h2>
         <div className="row">
+          {/* Website Development */}
           <div className="col-md-4 mb-4">
             <Card className="card shadow-lg">
               <div className="card-body">
-                <img src='../../public/logo192.png' alt='random quote'/>
-                <CardTitle>Random Quote Machine</CardTitle>
-                <CardText>A React app that generates random quotes, complete with Twitter sharing functionality.</CardText>
-
+                <img src="../../public/logo192.png" alt="website development" />
+                <CardTitle>Website Development</CardTitle>
+                <CardText>Developed responsive websites using HTML, CSS, and JavaScript frameworks.</CardText>
                 <StyledList>
-                <StyledListItem>
-                         <StyledIconHtml className="fa-brands fa-html5" ></StyledIconHtml>
-                    </StyledListItem>
-
-                    <StyledListItem>
-                       <StyledIconCSS className="fa-brands fa-css3-alt" ></StyledIconCSS>
-                    </StyledListItem>
-                    <StyledListItem>
-                        <StyledIconJs className="fa-brands fa-js"></StyledIconJs>
-                    </StyledListItem>
-                </StyledList>   
-
-                <a href="#" 
-                className="btn btn-light" 
-                style={{margin:'70px -120px',borderBottom: '5px solid #ee9211', borderRadius: ' 10px 10px', backgroundColor:'transparent', color:'white'}}>View Project</a>
+                  <StyledListItem><StyledIconHtml /></StyledListItem>
+                  <StyledListItem><StyledIconCSS /></StyledListItem>
+                  <StyledListItem><StyledIconJs /></StyledListItem>
+                </StyledList>
+                <a href="#" className="btn btn-light" style={{margin:'70px -120px', borderBottom: '5px solid #ee9211', borderRadius: ' 10px 10px', backgroundColor:'transparent', color:'white'}}>View Project</a>
               </div>
             </Card>
           </div>
+          {/* Android Development */}
           <div className="col-md-4 mb-4">
             <Card className="card shadow-lg">
               <div className="card-body">
-              <img src='../../public/logo192.png' alt='random quote'/>
-                <CardTitle>Markdown Previewer</CardTitle>
-                <CardText>A React Markdown Previewer built with React.js and Markdown syntax support.</CardText>
+                <img src="../../public/logo192.png" alt="android development" />
+                <CardTitle>Android Development</CardTitle>
+                <CardText>Built Android applications with Java and Kotlin, focusing on UX and performance.</CardText>
                 <StyledList>
-                <StyledListItem>
-                         <StyledIconReact className="fa-brands fa-react"></StyledIconReact>
-                    </StyledListItem>
-
-                    <StyledListItem>
-                       <StyledIconCSS className="fa-brands fa-css3-alt"></StyledIconCSS>
-                    </StyledListItem>
-                    <StyledListItem>
-                    
-                   </StyledListItem>
-                </StyledList>   
-                
-                <a href="#" className="btn btn-light" style={{margin:'70px -120px',borderBottom: '5px solid #ee9211', borderRadius: ' 10px 10px', backgroundColor:'transparent', color:'white'}}>View Project</a>
+                  <StyledListItem><StyledIconAndroid /></StyledListItem>
+                  <StyledListItem><StyledIconCSS /></StyledListItem>
+                </StyledList>
+                <a href="#" className="btn btn-light" style={{margin:'70px -120px', borderBottom: '5px solid #ee9211', borderRadius: ' 10px 10px', backgroundColor:'transparent', color:'white'}}>View Project</a>
               </div>
             </Card>
           </div>
+          {/* UX/UI Design */}
           <div className="col-md-4 mb-4">
             <Card className="card shadow-lg">
               <div className="card-body">
-              <img src='../../public/logo192.png' alt='random quote'/>
-                <CardTitle>Drum Machine</CardTitle>
-                <CardText>A React-based drum machine where users can click buttons to play different sounds.</CardText>
-                
+                <img src="../../public/logo192.png" alt="ux/ui design" />
+                <CardTitle>UX/UI Design</CardTitle>
+                <CardText>Designed user-centric interfaces using Figma and Adobe XD, focusing on usability and aesthetics.</CardText>
                 <StyledList>
-                <StyledListItem>
-                         <StyledIconHtml className="fa-brands fa-html5" ></StyledIconHtml>
-                    </StyledListItem>
-
-                    <StyledListItem>
-                       <StyledIconCSS className="fa-brands fa-css3-alt" ></StyledIconCSS>
-                    </StyledListItem>
-                    <StyledListItem>
-                        <StyledIconJs className="fa-brands fa-js"></StyledIconJs>
-                    </StyledListItem>
-                </StyledList>  
-
-                <a href="#"
-                 className="btn btn-light"
-                 style={{margin:'70px -120px',
-                 borderBottom: '5px solid #ee9211',
-                 borderRadius: ' 10px 10px',
-                 backgroundColor:'transparent',
-                 color:'white'}}>View Project</a>
+                  <StyledListItem><StyledIconUxUi /></StyledListItem>
+                </StyledList>
+                <a href="#" className="btn btn-light" style={{margin:'70px -120px', borderBottom: '5px solid #ee9211', borderRadius: ' 10px 10px', backgroundColor:'transparent', color:'white'}}>View Project</a>
               </div>
             </Card>
           </div>
-          
+          {/* Website Design */}
+          <div className="col-md-4 mb-4">
+            <Card className="card shadow-lg">
+              <div className="card-body">
+                <img src="../../public/logo192.png" alt="aa" />
+                <CardTitle>Website Design</CardTitle>
+                <CardText>Created visually appealing websites with a focus on modern aesthetics and functionality.</CardText>
+                <StyledList>
+                  <StyledListItem><StyledIconWebDesign /></StyledListItem>
+                </StyledList>
+                <a href="#" className="btn btn-light" style={{margin:'70px -120px', borderBottom: '5px solid #ee9211', borderRadius: ' 10px 10px', backgroundColor:'transparent', color:'white'}}>View Project</a>
+              </div>
+            </Card>
+          </div>
         </div>
       </div>
     </Section>

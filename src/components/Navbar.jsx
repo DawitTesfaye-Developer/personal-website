@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css'; // Import Font Awesome
+import './Navbar.css';
 
 const Navbar = () => {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'auto');
 
+  // Function to apply theme based on selection
   const applyTheme = (theme) => {
     if (theme === 'auto') {
       const systemDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -17,11 +19,13 @@ const Navbar = () => {
     }
   };
 
+  // Use effect to apply the theme on component mount and theme change
   useEffect(() => {
     applyTheme(theme);
     localStorage.setItem('theme', theme);
   }, [theme]);
 
+  // Get the appropriate icon for the current theme
   const getThemeIcon = () => {
     if (theme === 'light') {
       return <i className="fas fa-moon"></i>; // Moon icon for light theme
