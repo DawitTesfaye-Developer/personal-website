@@ -9,3 +9,8 @@ body.light-theme {
     color: white;
   }
   
+ 
+  #fa {
+    margin-right: 10px; /* Adjust this value to your preference */
+    color: #ebb222;
+  }

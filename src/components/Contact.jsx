@@ -4,18 +4,27 @@ import { useForm } from 'react-hook-form';
 import "../components/contact.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faTwitter, faLinkedin, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { db } from "../firebase"; // Import Firebase Firestore
+import { collection, addDoc } from "firebase/firestore"; // Firestore methods
+
+
 
 const Contact = () => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
   const onSubmit = async (data) => {
     try {
-      // Handle form submission
-      console.log('Form Data:', data);
-      
-      // Simulate a form submission with a delay
+      // Add the form data to Firestore
+      await addDoc(collection(db, "contacts"), {
+        fullname: data.fullname,
+        email: data.email,
+        message: data.message,
+        timestamp: new Date()
+      });
+
+      // Simulate a delay to mimic form submission
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      
+
       reset(); // Reset form fields
       alert('Message sent successfully!');
     } catch (error) {
@@ -31,7 +40,7 @@ const Contact = () => {
       
       <h2 className="text-center text-4xl font-extrabold text-white mb-6">Contact Us</h2>
       
-      <div className="container mx-auto relative z-10 h-full flex items-center justify-center">
+      <div className="container-contact mx-auto relative z-10 h-full flex items-center justify-center">
         <div className="w-full bg-white bg-opacity-10 p-8 rounded-lg shadow-xl border border-gray-300 contact-form-container">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div className="form-group">

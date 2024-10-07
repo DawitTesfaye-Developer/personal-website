@@ -9,13 +9,32 @@ const Navbar = () => {
 
   // Function to apply theme based on selection
   const applyTheme = (theme) => {
+    const navbar = document.querySelector('.navbar');
+
+    // Apply styles based on the selected theme
     if (theme === 'auto') {
       const systemDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
       document.body.classList.remove('light-theme', 'dark-theme');
       document.body.classList.add(systemDarkMode ? 'dark-theme' : 'light-theme');
+      navbar.classList.remove('bg-light', 'navbar-light', 'bg-dark', 'navbar-dark');
+      navbar.classList.add(systemDarkMode ? 'bg-dark' : 'bg-light', systemDarkMode ? 'navbar-dark' : 'navbar-light');
+
+      // Change body background color based on system preference
+      document.body.style.backgroundColor = systemDarkMode ? '#343a40' : '#f8f9fa';
     } else {
       document.body.classList.remove('light-theme', 'dark-theme');
       document.body.classList.add(`${theme}-theme`);
+
+      // Change navbar background and body background based on selected theme
+      if (theme === 'light') {
+        navbar.classList.remove('bg-dark', 'navbar-dark');
+        navbar.classList.add('bg-light', 'navbar-light'); // Set light theme for navbar
+        document.body.style.backgroundColor = '#f8f9fa'; // Light background color
+      } else {
+        navbar.classList.remove('bg-light', 'navbar-light');
+        navbar.classList.add('bg-dark', 'navbar-dark'); // Set dark theme for navbar
+        document.body.style.backgroundColor = '#343a40'; // Dark background color
+      }
     }
   };
 
@@ -48,22 +67,22 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-              <a className="nav-link" href="#home">Home</a>
+              <a className="nav-link" href="#home"><i id='fa' className="fas fa-home"></i> Home</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#about">About</a>
+              <a className="nav-link" href="#about"><i id='fa' className="fas fa-info-circle"></i> About</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#services">Services</a>
+              <a className="nav-link" href="#services"><i id='fa' className="fas fa-concierge-bell"></i> Services</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#projects">Projects</a>
+              <a className="nav-link" href="#projects"><i id='fa' className="fas fa-tasks"></i> Projects</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#contact">Contact</a>
+              <a className="nav-link" href="#contact"><i id='fa' className="fas fa-envelope"></i> Contact</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#TopSkills">Top Skills</a>
+              <a className="nav-link" href="#TopSkills"><i id='fa' className="fas fa-tools"></i> Top Skills</a>
             </li>
 
             {/* Dropdown for theme selection */}

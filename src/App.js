@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ThreeBackground from './ThreeBackground'; // Ensure this file exists and is imported correctly
 import TopSkills from './components/TopSkills';
 import './App.css';
-import Certified from './components/Certified';
+import Testimonials from './components/Testimonials';
 
 
 const App = () => {
@@ -23,7 +23,7 @@ const App = () => {
         <TopSkills />
         <Projects />
         <Services />
-        {/* <Certified /> */}
+        <Testimonials/>
         <Contact />
       </div>
     </>
