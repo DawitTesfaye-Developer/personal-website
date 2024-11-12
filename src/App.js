@@ -6,25 +6,28 @@ import Projects from './components/Projects';
 import Services from './components/Services';
 import Contact from './components/Contact';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ThreeBackground from './ThreeBackground'; // Ensure this file exists and is imported correctly
+import ThreeBackground from './ThreeBackground';
 import TopSkills from './components/TopSkills';
-import './App.css';
 import Testimonials from './components/Testimonials';
-
+import CertificatePage from './components/CertificatePage.jsx'
+import Footer from './components/Footer.jsx';
 
 const App = () => {
   return (
     <>
-      <ThreeBackground /> {/* The style prop is unnecessary here */}
-      <div className="App bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 min-h-screen">
+      <ThreeBackground />
+      <div className="App">
         <Navbar />
         <Home />
-        <About />
-        <TopSkills />
-        <Projects />
-        <Services />
-        <Testimonials/>
-        <Contact />
+          <About />
+          <TopSkills />
+          <Projects />
+          {/* <Services /> */}
+          <CertificatePage/>
+          <Testimonials />
+          <Contact />
+          <Footer/>
+        
       </div>
     </>
   );

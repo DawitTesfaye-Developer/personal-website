@@ -16,9 +16,9 @@ const ThreeBackground = () => {
       mountRef.current.appendChild(renderer.domElement);
     }
 
-    const particleCount = 5000;
+    const particleCount = 3000;
     const geometry = new THREE.BufferGeometry();
-    const positions = new Float32Array(particleCount * 3);
+    const positions = new Float32Array(particleCount * 2);
 
     for (let i = 0; i < particleCount * 3; i++) {
       positions[i] = (Math.random() - 0.5) * 100;

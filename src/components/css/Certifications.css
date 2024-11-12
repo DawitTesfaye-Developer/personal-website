@@ -1,0 +1,110 @@
+.certifications-container {
+  padding: 20px;
+  text-align: center;
+  height: 600px;
+  width: 100vw;
+  margin-top: 340px;
+  /* margin-left: -20px;
+  margin-right: -20px; */
+  background-color: rgba(15, 15, 36, 0.9);
+}
+
+@media (max-width: 768px) {
+  .certificate-card {
+    flex: 0 0 80%; /* For mobile, make each card wider */
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .certificate-card {
+    flex: 0 0 40%; /* For tablets, show two certificates */
+  }
+}
+
+@media (min-width: 1025px) {
+  .certificate-card {
+    flex: 0 0 30%; /* For desktop, fit three certificates */
+  }
+}
+
+.certificates-slider {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  margin-top: 20px;
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.slider-wrapper {
+  display: inline-flex;
+  animation: slide-left 35s linear infinite;
+}
+
+.certificate-card {
+  flex: 0 0 500px;
+  margin: 0 30px;
+  border: 1px solid #777775;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  display: inline-flex;
+ margin-top: 30px;
+  text-align: center;
+  background-color: #333;
+  border-radius: 10px;
+  color: #fff;
+  overflow: hidden; 
+  height: 100%;
+  padding-bottom: 30px;
+  transition: transform 0.1s ease;
+}
+
+.certificate-image {
+  width: 100%;
+  height: 100%;
+  /* object-fit: cover; */
+}
+
+.certificate-content {
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.7); /* Dark overlay for readability */
+  color: #fff;
+  text-align: center;
+}
+
+.certificate-content h2 {
+  margin: 10px 0 5px;
+  font-size: 1.2rem;
+  &:hover {
+    color: #ff1493;
+    cursor: pointer;
+  }
+}
+
+ h1{
+ color: #ebb222;
+
+}
+h1:hover {
+  color: #ff1493;
+  cursor: pointer;
+}
+.certificate-content p, .certificate-content span {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.certificate-card:hover{
+  transform:scale(1.05);
+}

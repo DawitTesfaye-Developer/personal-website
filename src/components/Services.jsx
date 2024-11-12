@@ -1,7 +1,6 @@
-// components/Services.js
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../components/services.css';
+import '../components/css/services.css';
 
 const Services = () => {
   return (
@@ -10,9 +9,9 @@ const Services = () => {
       <div className="background-container"></div>
 
       {/* Services section */}
-      <section id="services" className="services-section py-16">
-        <div className="container mx-auto">
-          <h2 className="text-center text-4xl font-extrabold text-white mb-12">
+      <section id="services" className="services-section py-5">
+        <div className="container">
+          <h2 className="Service-title text-center text-4xl font-extrabold text-white mb-5">
             Our Services
           </h2>
           <div className="row justify-content-center">
@@ -32,6 +31,7 @@ const Services = () => {
               description="Creating visually appealing and user-friendly interfaces using Figma and Adobe XD."
               borderColor="var(--success-color)"
               iconColor="var(--green)"
+              
             />
 
             <ServiceCard
@@ -56,10 +56,11 @@ const Services = () => {
   );
 };
 
+
 // ServiceCard Component
 const ServiceCard = ({ iconClass, title, description, borderColor, iconColor }) => {
   return (
-    <div className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+    <div id="section" className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
       <div
         className="card service-card border-0 shadow-lg"
         style={{ borderColor }}

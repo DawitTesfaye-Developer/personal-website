@@ -3,6 +3,13 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaHtml5, FaCss3Alt, FaJs ,FaReact, FaAndroid, FaPaintBrush, FaCode } from 'react-icons/fa';
+import '../assets/and1.jpg';
+import Android from "../assets/design.gif"
+import website from "../assets/drum.png"
+import ux from "../assets/and2.jpg";
+import ux2 from "../assets/and3.jpg"
+import ux3 from "../assets/and4.jpg"
+import "../components/css/project.css"
 
 // Keyframes for background color movement
 const backgroundColorMovement = keyframes`
@@ -61,10 +68,12 @@ const Section = styled.section`
 `;
 
 const Card = styled.div`
-  background-color: rgba(15, 15, 36, 0.9); // Dark gray background
+   // Dark gray background
+  background: rgba(15, 15, 36, 0.7);
   color: #f8f9fa; // Light text color
   border: none; // No border initially
   border-radius: 0.5rem; // Rounded corners
+  padding : 50px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Initial shadow
   position: relative; // Position relative for pseudo-element
   transition: background-color 0.3s ease, color 0.3s ease; // Smooth color transition
@@ -93,6 +102,13 @@ const Card = styled.div`
     &::before {
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     }
+  }
+
+  // Media query for a 2x2 grid layout
+  @media (min-width: 300px) and (max-width: 800px) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px, 4fr)); // Create 2 equal columns
+    gap: 20px; // Space between cards
   }
 `;
 
@@ -158,8 +174,8 @@ const Projects = () => {
           {/* Website Development */}
           <div className="col-md-4 mb-4">
             <Card className="card shadow-lg">
-              <div className="card-body">
-                <img src="../../public/logo192.png" alt="website development" />
+              <div className="card-body align-items-center display-flex">
+                <img src={website} style={{width :'100%',height :'200px'}} alt="website development" />
                 <CardTitle>Website Development</CardTitle>
                 <CardText>Developed responsive websites using HTML, CSS, and JavaScript frameworks.</CardText>
                 <StyledList>
@@ -167,7 +183,7 @@ const Projects = () => {
                   <StyledListItem><StyledIconCSS /></StyledListItem>
                   <StyledListItem><StyledIconJs /></StyledListItem>
                 </StyledList>
-                <a href="#" className="btn btn-light" style={{margin:'70px -120px', borderBottom: '5px solid #ee9211', borderRadius: ' 10px 10px', backgroundColor:'transparent', color:'white'}}>View Project</a>
+                <a href="https://drum-09ic.onrender.com/" className="btn btn-light" style={{margin:'70px -120px', borderBottom: '5px solid #ee9211', borderRadius: ' 10px 10px', backgroundColor:'transparent', color:'white'}}>View Project</a>
               </div>
             </Card>
           </div>
@@ -175,28 +191,30 @@ const Projects = () => {
           <div className="col-md-4 mb-4">
             <Card className="card shadow-lg">
               <div className="card-body">
-                <img src="../../public/logo192.png" alt="android development" />
+                <img src= {Android} style={{width:'100%'}}/>
                 <CardTitle>Android Development</CardTitle>
                 <CardText>Built Android applications with Java and Kotlin, focusing on UX and performance.</CardText>
                 <StyledList>
                   <StyledListItem><StyledIconAndroid /></StyledListItem>
                   <StyledListItem><StyledIconCSS /></StyledListItem>
                 </StyledList>
-                <a href="#" className="btn btn-light" style={{margin:'70px -120px', borderBottom: '5px solid #ee9211', borderRadius: ' 10px 10px', backgroundColor:'transparent', color:'white'}}>View Project</a>
+                <a href="https://github.com/Dawi6825github/maaddii-food-Ordering-system/tree/main" className="btn btn-light" style={{margin:'70px -120px', borderBottom: '5px solid #ee9211', borderRadius: ' 10px 10px', backgroundColor:'transparent', color:'white'}}>View Project</a>
               </div>
             </Card>
           </div>
           {/* UX/UI Design */}
           <div className="col-md-4 mb-4">
             <Card className="card shadow-lg">
-              <div className="card-body">
-                <img src="../../public/logo192.png" alt="ux/ui design" />
+              <div className="card-body ">
+                <img src={ux} style={{width:'50px',borderRadius:'0px'}} alt="ux/ui design" />
+                <img src={ux2} style={{width:'50px',borderRadius:'0px'}} alt="ux/ui design" />
+                <img src={ux3} style={{width:'50px',borderRadius:'0px'}} alt="ux/ui design" />
                 <CardTitle>UX/UI Design</CardTitle>
                 <CardText>Designed user-centric interfaces using Figma and Adobe XD, focusing on usability and aesthetics.</CardText>
                 <StyledList>
                   <StyledListItem><StyledIconUxUi /></StyledListItem>
                 </StyledList>
-                <a href="#" className="btn btn-light" style={{margin:'70px -120px', borderBottom: '5px solid #ee9211', borderRadius: ' 10px 10px', backgroundColor:'transparent', color:'white'}}>View Project</a>
+                <a href="https://www.figma.com/files/team/1265252548534775182/recents-and-sharing?fuid=1265252546421034971" className="btn btn-light" style={{margin:'70px -120px', borderBottom: '5px solid #ee9211', borderRadius: ' 10px 10px', backgroundColor:'transparent', color:'white'}}>View Project</a>
               </div>
             </Card>
           </div>

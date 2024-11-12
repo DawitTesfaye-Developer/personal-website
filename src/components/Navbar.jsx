@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css'; // Import Font Awesome
-import './Navbar.css';
+import '../components/css/Navbar.css';
 
 const Navbar = () => {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'auto');
@@ -38,6 +38,18 @@ const Navbar = () => {
     }
   };
 
+
+  document.querySelectorAll('.dropdown-toggle').forEach(item => {
+    item.addEventListener('click', function(e) {
+      e.preventDefault();
+      let dropdownMenu = this.nextElementSibling;
+      // Toggle the display of the dropdown
+      dropdownMenu.style.display = (dropdownMenu.style.display === 'block') ? 'none' : 'block';
+    });
+  });
+  
+
+
   // Use effect to apply the theme on component mount and theme change
   useEffect(() => {
     applyTheme(theme);
@@ -59,7 +71,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
       <div className="container">
         <a className="navbar-brand" href="#home">
-          <img src='./assets/T.png' alt='logo' />
+          <img src='../assets/T.png' alt='logo' />
         </a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
@@ -72,18 +84,26 @@ const Navbar = () => {
             <li className="nav-item">
               <a className="nav-link" href="#about"><i id='fa' className="fas fa-info-circle"></i> About</a>
             </li>
+
             <li className="nav-item">
-              <a className="nav-link" href="#services"><i id='fa' className="fas fa-concierge-bell"></i> Services</a>
+              <a className="nav-link" href="#TopSkills"><i id='fa' className="fas fa-tools"></i> Top Skills</a>
             </li>
+
             <li className="nav-item">
               <a className="nav-link" href="#projects"><i id='fa' className="fas fa-tasks"></i> Projects</a>
+            </li>
+
+            <li className="nav-item">
+              <a className="nav-link" href="#Certificates"><i id='fa' className="fa fa-certificate"></i>Certificates</a>
+            </li>
+
+            <li className="nav-item">
+              <a className="nav-link" href="#testimony"><i id='fa' className="fa fa-star"></i>Testimony</a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#contact"><i id='fa' className="fas fa-envelope"></i> Contact</a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#TopSkills"><i id='fa' className="fas fa-tools"></i> Top Skills</a>
-            </li>
+
 
             {/* Dropdown for theme selection */}
             <li className="nav-item dropdown">

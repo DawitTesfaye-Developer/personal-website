@@ -1,0 +1,257 @@
+/* General Home Section Styling */
+.home-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* Center content */
+  align-items: center; /* Center content */
+  height: 100vh; /* Fullscreen height */
+  position: relative;
+  width: 100vw; /* Fullscreen width */
+  overflow-x: hidden; /* Prevents horizontal scroll on the section */
+  background-color: rgba(15, 15, 36, 0.9);
+}
+
+/* Prevent horizontal scroll */
+body, html {
+  overflow-x: hidden;
+  width: 100vw;
+}
+/* Content section styling */
+.content {
+  width: 100%;
+  position: relative;
+  height: auto;
+  text-align: center;
+
+}
+.wave {
+  display: inline-block;
+  animation: wave 1s infinite ease-in-out;
+  transform-origin: 50% 50%;
+}
+
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(30deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-30deg); }
+  100% { transform: rotate(0deg); }
+}
+
+p {
+  font-size: 1.5rem;
+  color: #ddd;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+/* Image Styling */
+.portfolio-image-container {
+
+  justify-content: center;
+align-content: center;
+/* margin: 0 0 0% 60%; */
+}
+
+@media(min-width: 331px) and (max-width:800px){
+  .home-section {
+
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center; 
+    align-items: center; 
+padding-top: 300px;
+position: relative;
+overflow-y: hidden;
+
+  }
+  .portfolio-image-container {
+    margin: 30%;
+    padding-top: 10%;
+  }
+
+  .content{
+    align-content: center;
+    justify-content: center;
+    margin: 0 auto;
+    top: 0;
+  }
+h1{
+  
+   justify-content: center;
+   align-items: center;
+   }
+p{
+  justify-content: center;
+   align-items: center;
+}
+
+   .wave {
+    animation: wave 0.5s infinite ease-in-out;
+    transform-origin: scaleX(0.5);
+  }
+}
+
+
+@media (min-width: 768px) {
+  .home-section {
+    flex-direction: column;
+    height: 100vh; /* Fullscreen height */
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  p {
+    font-size: 1.5rem;
+  }
+
+  .button {
+    font-size: 1rem;
+    padding: 8px 16px;
+    margin: 20px auto;
+  }
+
+  .portfolio-image-container {
+    margin-right: 0;
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-section {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Fullscreen height */
+  }
+
+  .content {
+    justify-content: center;
+    align-items: center;
+  }
+  h1 {
+    font-size: 2.5rem;
+  }
+  p {
+    font-size: 1.2rem;
+  }
+
+  .button {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+
+  .portfolio-image-container {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 800px) {
+  .home-section {
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height: 800px; /* Fullscreen height */
+   
+  }
+
+  .content {
+    margin: 0 auto;
+    
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    
+  }
+
+  p {
+    font-size: 1.5rem;
+  }
+
+  .button {
+    font-size: 1rem;
+  }
+
+  .portfolio-image-container {
+    margin-right: 0;
+    justify-content: center;
+    margin-right: 30%;
+    margin-top: 30px;
+  }
+}
+
+/* Additional Styling */
+.content h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #ffffff;
+  padding: 0 40px;
+}
+.content p {
+  font-size: 2rem;
+  color: #ebb222;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: .15em solid #dfb93ff8;
+  animation: typing 4s steps(30, end), blink-caret .75s step-end infinite;
+}
+img {
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+}
+
+.button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: transparent;
+  border: 2px solid transparent;
+  position: relative;
+  transition: color 0.3s;
+  border-bottom: 5px solid #eeb222;
+  border-radius: 20px;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #eeb222;
+  transition: transform 0.3s ease-in-out;
+  transform: scale(0);
+  z-index: -1;
+  border-radius: 20px;
+}
+
+.button:hover::before {
+  transform: scale(1);
+}
+
+.button:hover {
+  color: #ebb222;
+  background-color: rgba(2, 0, 5, 0.6);
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: #00ff00; }
+}
