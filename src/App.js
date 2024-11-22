@@ -15,7 +15,7 @@ import Footer from './components/Footer.jsx';
 const App = () => {
   return (
     <>
-      <ThreeBackground />
+      // <ThreeBackground />
       <div className="App">
         <Navbar />
         <Home />
