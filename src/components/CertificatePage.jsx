@@ -88,7 +88,7 @@ function Certifications() {
   }, [filter]);
 
   return (
-    <Section id="certification">
+    <Section id="CertificatePage">
     <div className="certifications-container">
       <h1>My Certifications</h1>
       <div className="certificates-slider">
