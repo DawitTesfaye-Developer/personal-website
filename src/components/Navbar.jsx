@@ -94,11 +94,11 @@ const Navbar = () => {
             </li>
 
             <li className="nav-item">
-              <a className="nav-link" href="#Certificates"><i id='fa' className="fa fa-certificate"></i>Certificates</a>
+              <a className="nav-link" href="#CertificatePage"><i id='fa' className="fa fa-certificate"></i>Certificates</a>
             </li>
 
             <li className="nav-item">
-              <a className="nav-link" href="#testimony"><i id='fa' className="fa fa-star"></i>Testimony</a>
+              <a className="nav-link" href="#Testimonials"><i id='fa' className="fa fa-star"></i>Testimony</a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#contact"><i id='fa' className="fas fa-envelope"></i> Contact</a>
