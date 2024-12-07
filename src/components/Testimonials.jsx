@@ -192,7 +192,7 @@ const Testimonials = () => {
   };
 
   return (
-    <TestimonialSection>
+    <TestimonialSection id="Testimonials">
       <Heading>What People Are Saying</Heading>
       <TestimonialGrid>
         {testimonialsData.map((testimonial, index) => (
