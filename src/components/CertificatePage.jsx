@@ -88,6 +88,7 @@ function Certifications() {
   }, [filter]);
 
   return (
+    <Section id="certification">
     <div className="certifications-container">
       <h1>My Certifications</h1>
       <div className="certificates-slider">
@@ -107,6 +108,7 @@ function Certifications() {
         </div>
       </div>
     </div>
+  </Section>
   );
 }
 
