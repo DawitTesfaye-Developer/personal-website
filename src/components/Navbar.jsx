@@ -94,7 +94,7 @@ const Navbar = () => {
             </li>
 
             <li className="nav-item">
-              <a className="nav-link" href="#CertificationPage"><i id='fa' className="fa fa-certificate"></i>Certificates</a>
+              <a className="nav-link" href="#Certification"><i id='fa' className="fa fa-certificate"></i>Certificates</a>
             </li>
 
             <li className="nav-item">
