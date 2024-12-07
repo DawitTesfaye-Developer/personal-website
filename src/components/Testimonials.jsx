@@ -192,7 +192,7 @@ const Testimonials = () => {
   };
 
   return (
-    <TestimonialSection id="Testimonials">
+    <Section id="Testimonials">
       <Heading>What People Are Saying</Heading>
       <TestimonialGrid>
         {testimonialsData.map((testimonial, index) => (
@@ -213,7 +213,7 @@ const Testimonials = () => {
           </TestimonialCard>
         ))}
       </TestimonialGrid>
-    </TestimonialSection>
+    </Section>
   );
 };
 
