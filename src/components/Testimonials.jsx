@@ -35,7 +35,7 @@ const testimonialsData = [
   },
 ];
 
-const TestimonialSection = styled.section`
+const Section = styled.section`
   background-color: rgba(15, 15, 36, 0.9);
   text-align: center;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
