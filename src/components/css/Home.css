@@ -55,6 +55,53 @@ align-content: center;
 /* margin: 0 0 0% 60%; */
 }
 
+
+
+/*information for the*/
+/* Adjustments for 320px and Below */
+@media (max-width: 320px) {
+  .home-section {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Allow height to adjust naturally */
+    padding: 10px;
+  }
+
+  .content {
+    width: 100%;
+padding-top: 200px;
+overflow-y: none;
+
+  }
+
+  .content h1 {
+    font-size: 1.5rem;
+    /* margin-bottom: 10px; */
+  }
+
+  .content p.typing-effect {
+    font-size: 1rem;
+    border-right: 0.1em solid #dfb93ff8;
+  }
+
+  .button {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+
+  .portfolio-image-container img {
+    width: 200px;
+    height: 200px;
+     /* justify-content: center; */
+    padding-left:100px; 
+    border-radius: 40px;
+    padding-top:70px;
+    align-items: center;
+  }
+}
+
+
 @media(min-width: 331px) and (max-width:800px){
   .home-section {
 
