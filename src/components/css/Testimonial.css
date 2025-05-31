@@ -1,0 +1,105 @@
+/* Testimonial.css */
+
+section#Testimonials {
+    padding: 4rem 1rem 5rem 1rem;
+    background: linear-gradient(135deg, #bb8237 0%, #e0e7ef 100%);
+    min-height: 100vh;
+    text-align: center;
+    width: 100%;
+}
+
+h2, .heading {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: #22223b;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 600px) {
+    section#Testimonials {
+        padding: 2rem 0.2rem 3rem 0.2rem;
+    }
+    h2, .heading {
+        font-size: 2rem;
+    }
+}
+
+/* Grid */
+div[style*="display: grid"] {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Card */
+div[role="group"], .motion-div, .testimonial-card {
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    cursor: pointer;
+    min-height: 320px;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+div[role="group"]:hover, .motion-div:hover, .testimonial-card:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    transform: scale(1.04);
+}
+
+@media (max-width: 600px) {
+    div[role="group"], .motion-div, .testimonial-card {
+        min-height: 250px;
+    }
+}
+
+/* Inner Card */
+.inner {
+    padding: 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Front/Back (for possible flip effect) */
+.front, .back {
+    width: 100%;
+}
+
+/* Name */
+h3, .name {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    color: #3a3a5a;
+}
+
+/* Position */
+.position {
+    color: #888;
+    margin-bottom: 1rem;
+    font-style: italic;
+    font-size: 1rem;
+}
+
+/* Testimonial Text */
+p, .testimonial-text {
+    font-size: 1.1rem;
+    color: #444;
+    margin-bottom: 0;
+    line-height: 1.6;
+}
+
+/* Details Text */
+.details-text {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 1rem;
+}

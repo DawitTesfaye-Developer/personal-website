@@ -1,109 +1,145 @@
-/* Root variables for global colors */
-:root {
-  --primary-color: #3498db;
-  --danger-color: #e74c3c;
-  --white: #ffffff;
-  --gray: #bdc3c7;
+.contact-section {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e0e7ff 100%);
+  padding: 3rem 0;
+  margin-top: 100px;
 }
 
-
-#contact{
-  background-color: rgba(15, 15, 36, 0.9); 
-width: 100%;
-height: 100%;
-}
-h2{
-  color: #ffffff;
-  text-transform: capitalize;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-  transition: color 0.3s ease;
-}
-h2:hover{
-  color:#ebb222;
-  cursor: pointer;
-}
-/* Container styles for the entire contact section */
 .contact-container {
-width: 400px;
-height: 800px;
-  justify-content: center;
-  /* padding-left: 20rem; */
-  position: relative;
-  border-radius: 12px;
-padding: 200px 0 100px 500px;
+  max-width: 420px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 24px rgba(30,41,59,0.08);
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Form container with transparent background and shadow */
-.contact-form-container {
-  background-color: rgba(255, 255, 255, 0.1); /* Transparent background */
-  border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); /* Border shadow */
-  border: 2px solid rgba(255, 255, 255, 0.3); /* Light border to define card */
-  padding: 20px;
-  width: 50%;
+.contact-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary, #6366f1);
+  margin-bottom: 0.2rem;
+  text-align: center;
+  letter-spacing: -1px;
+}
+
+.contact-subtitle {
+  color: #64748b;
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.contact-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 1.1rem 1rem 0.5rem 1rem;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 0.75rem;
+  background: #f8fafc;
+  font-size: 1rem;
+  color: #334155;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  resize: none;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px #6366f133;
+}
+
+.input-group label {
+  position: absolute;
+  left: 1rem;
+  top: 1.1rem;
+  background: transparent;
+  color: #64748b;
+  font-size: 1rem;
+  pointer-events: none;
+  transition: 0.2s;
+  padding: 0 0.2rem;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label,
+.input-group textarea:focus + label,
+.input-group textarea:not(:placeholder-shown) + label {
+  top: 0.3rem;
+  left: 0.9rem;
+  font-size: 0.85rem;
+  color: #6366f1;
+  background: #fff;
+}
+
+.contact-btn {
+  display: flex;
   align-items: center;
   justify-content: center;
-  paddding-left: 200px;
-  margin-top: 50px;
-}
-
-/* Input and text area styling */
-.form-control {
-  background-color: rgba(255, 255, 255, 0.2); /* Transparent input background */
-  border-radius: 8px;
-  padding: 12px;
-  border: 2px solid var(--gray);
-  color: var(--white); /* White text */
-  outline: none;
-}
-
-.form-control::placeholder {
-  color: rgba(255, 255, 255, 0.9); /* Lighter placeholder color */
-}
-
-/* Button with hover effect */
-.submit-button {
-  background-color: transparent;
-  border-radius: 8px;
-  cursor: pointer;
+  gap: 0.5rem;
+  background: linear-gradient(90deg, #6366f1 60%, #818cf8 100%);
+  color: #fff;
+  font-weight: 600;
   font-size: 1.1rem;
-
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.85rem 1.5rem;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(99,102,241,0.08);
 }
 
-.submit-button:hover {
-  transform: scale(1.05);
-  transition: 0.3s;
-  background-color: aqua;
+.contact-btn:hover,
+.contact-btn:focus {
+  background: linear-gradient(90deg, #4f46e5 60%, #6366f1 100%);
+  box-shadow: 0 4px 16px rgba(99,102,241,0.12);
 }
 
-/* Social media icons with hover effect */
-
-.social-links{
-  padding: 50PX;
-}
-.social-links a{
-  transition: color 0.3s ease;
-  justify-content:space-between;
-  padding: 5px;
- 
-}
-.twitter{
-  color: #1DA1F2;
-}
-.facebook{
-color:#1877F2
-}
-.instagram{
-  color: #E1306C;
-}
-.linkedin{
-  color: #0077B5;
-}
-.social-links a:hover {
-  color: var(--primary-color); /* Change to primary color on hover */
+.contact-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 1.5rem 0.5rem;
 }
 
-/* Error message styling */
-.text-red-500 {
-  color: var(--danger-color);
+.contact-success svg {
+  margin-bottom: 0.2rem;
+}
+
+.contact-success span {
+  color: #22c55e;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+@media (max-width: 600px) {
+  .contact-container {
+    padding: 1.2rem 0.7rem;
+  }
+  .contact-title {
+    font-size: 1.4rem;
+  }
+  .contact-btn {
+    font-size: 1rem;
+    padding: 0.7rem 1rem;
+  }
 }

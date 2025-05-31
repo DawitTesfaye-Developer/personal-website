@@ -1,109 +1,196 @@
-// components/Contact.js
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import "../components/css/Contact.css"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebookF, faTwitter, faLinkedin, faInstagram } from '@fortawesome/free-brands-svg-icons';
-import { db } from "../firebase"; // Import Firebase Firestore
-import { collection, addDoc } from "firebase/firestore"; // Firestore methods
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import "../components/css/Contact.css";
 
+const socialLinks = [
+  {
+    name: "GitHub",
+    url: "https://github.com/yourusername",
+    icon: (
+      <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+        <path fill="#181717" d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.02c-3.2.7-3.87-1.54-3.87-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.73 1.27 3.4.97.11-.75.41-1.27.74-1.56-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98.01 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.41-5.27 5.7.42.36.79 1.09.79 2.2v3.26c0 .31.21.67.8.56C20.71 21.39 24 17.08 24 12c0-6.27-5.23-11.5-12-11.5Z"/>
+      </svg>
+    ),
+  },
+  {
+    name: "LinkedIn",
+    url: "www.linkedin.com/in/dawit-tesfaye-hatau-60a17b311",
+    icon: (
+      <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+        <rect width="24" height="24" rx="4" fill="#0A66C2"/>
+        <path d="M7.5 8.5a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5Zm.75 2.25H6.75v7.25h1.5v-7.25Zm3.25 0h-1.5v7.25h1.5v-3.75c0-1.1.9-2 2-2s2 .9 2 2v3.75h1.5v-4.25c0-2.07-1.68-3.75-3.75-3.75s-3.75 1.68-3.75 3.75v4.25h1.5v-7.25Z" fill="#fff"/>
+      </svg>
+    ),
+  },
+  {
+    name: "Twitter",
+    url: "https://twitter.com/yourusername",
+    icon: (
+      <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="12" fill="#1DA1F2"/>
+        <path d="M19 8.3a5.6 5.6 0 0 1-1.6.44A2.8 2.8 0 0 0 18.5 7a5.6 5.6 0 0 1-1.78.68A2.8 2.8 0 0 0 12 10.5c0 .22.02.43.07.63A7.95 7.95 0 0 1 5.5 7.6a2.8 2.8 0 0 0 .87 3.74 2.8 2.8 0 0 1-1.27-.35v.04a2.8 2.8 0 0 0 2.25 2.75c-.2.05-.42.08-.64.08-.16 0-.3-.01-.45-.04a2.8 2.8 0 0 0 2.62 1.95A5.6 5.6 0 0 1 5 17.1a7.9 7.9 0 0 0 4.29 1.26c5.15 0 7.97-4.27 7.97-7.97 0-.12 0-.23-.01-.35A5.7 5.7 0 0 0 19 8.3Z" fill="#fff"/>
+      </svg>
+    ),
+  },
+];
 
+const inputVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.15, duration: 0.5, type: "spring" },
+  }),
+};
 
 const Contact = () => {
-  const { register, handleSubmit, formState: { errors }, reset } = useForm();
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [submitted, setSubmitted] = useState(false);
 
-  const onSubmit = async (data) => {
-    try {
-      // Add the form data to Firestore
-      await addDoc(collection(db, "contacts"), {
-        fullname: data.fullname,
-        email: data.email,
-        message: data.message,
-        timestamp: new Date()
-      });
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
-      // Simulate a delay to mimic form submission
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      reset(); // Reset form fields
-      alert('Message sent successfully!');
-    } catch (error) {
-      console.error('Submission error:', error);
-      alert('There was an error sending your message. Please try again.');
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
   };
 
   return (
-    <section id="contact" className="relative contact-container">
-      <div className="absolute inset-0 bg-cover bg-center opacity-60"></div>
-      <div className="absolute inset-0 bg-black bg-opacity-60"></div> {/* Higher opacity for better readability */}
-      
-      <h2 style={{padding:'50px 0 0 200px'}} className=" text-4xl font-extrabold text-white mb-6">Contact Us</h2>
-      
-      <div className="container-contact mx-auto relative z-10 h-full flex items-center justify-center">
-        <div className="w-full bg-white bg-opacity-10 p-8 rounded-lg shadow-xl border border-gray-300 contact-form-container">
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            <div className="form-group">
-              <label htmlFor="fullname" className="block text-lg font-semibold text-white mb-2">Full Name</label>
-              <input
-                type="text"
-                className={`form-control ${errors.fullname ? 'border-red-500' : 'border-gray-300'} p-4 rounded-md w-full`}
-                id="fullname"
-                placeholder="Your Full Name"
-                {...register('fullname', { required: 'Full Name is required' })}
-              />
-              {errors.fullname && <p className="text-red-500 text-sm mt-1">{errors.fullname.message}</p>}
-            </div>
-            
-            <div className="form-group">
-              <label htmlFor="email" className="block text-lg font-semibold text-white mb-2">Email</label>
-              <input
-                type="email"
-                className={`form-control ${errors.email ? 'border-red-500' : 'border-gray-300'} p-4 rounded-md w-full`}
-                id="email"
-                placeholder="Your Email"
-                {...register('email', { required: 'Email is required', pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: 'Invalid email address' } })}
-              />
-              {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="message" className="block text-lg font-semibold text-white mb-2">Message</label>
-              <textarea
-                className={`form-control ${errors.message ? 'border-red-500' : 'border-gray-300'} p-4 rounded-md w-full`}
-                id="message"
-                rows="3"
-                placeholder="Your Message"
-                {...register('message', { required: 'Message is required' })}
-              ></textarea>
-              {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>}
-            </div>
-
-            <button
-              type="submit"
-              className="submit-button w-full text-white py-2 px-4 rounded-md shadow-md hover:bg-blue-700 transition duration-300 ease-in-out"
+    <section className="contact-section">
+      <motion.div
+        className="contact-container"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, type: "spring" }}
+      >
+        <motion.h2
+          className="contact-title"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1, duration: 0.5 }}
+        >
+          Let's Connect
+        </motion.h2>
+        <motion.p
+          className="contact-subtitle"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+        >
+          Interested in collaborating or just want to say hi? Fill out the form below!
+        </motion.p>
+        <motion.div
+          className="contact-socials"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: {},
+            visible: {
+              transition: { staggerChildren: 0.1 },
+            },
+          }}
+        >
+          {socialLinks.map((link, i) => (
+            <motion.a
+              key={link.name}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-social-link"
+              aria-label={link.name}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3 + i * 0.1, duration: 0.4 }}
+              whileHover={{ scale: 1.15 }}
+              whileTap={{ scale: 0.95 }}
             >
-              Send Message
-            </button>
-          </form>
-          
-          {/* Social Media Links */}
-          <div className="social-links mt-8 flex justify-center space-x-4">
-            <a className="facebook" href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon icon={faFacebookF} size="2x" />
-            </a>
-            <a className="twitter" href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon icon={faTwitter} size="2x" />
-            </a>
-            <a className="linkedin" href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon icon={faLinkedin} size="2x" />
-            </a>
-            <a className="instagram" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-              <FontAwesomeIcon icon={faInstagram} size="2x" />
-            </a>
-          </div>
-        </div>
-      </div>
+              {link.icon}
+            </motion.a>
+          ))}
+        </motion.div>
+        {submitted ? (
+          <motion.div
+            className="contact-success"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <svg width="48" height="48" fill="none" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="12" fill="#4ade80"/>
+              <path d="M7 13l3 3 7-7" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <span>Thank you for reaching out!</span>
+          </motion.div>
+        ) : (
+          <motion.form
+            className="contact-form"
+            onSubmit={handleSubmit}
+            autoComplete="off"
+            initial="hidden"
+            animate="visible"
+          >
+            {["name", "email", "message"].map((field, i) => (
+              <motion.div
+                className="input-group"
+                key={field}
+                custom={i}
+                variants={inputVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                {field !== "message" ? (
+                  <>
+                    <input
+                      type={field === "email" ? "email" : "text"}
+                      name={field}
+                      placeholder=" "
+                      value={form[field]}
+                      onChange={handleChange}
+                      required
+                      id={`contact-${field}`}
+                    />
+                    <label htmlFor={`contact-${field}`}>
+                      {field === "name"
+                        ? "Your Name"
+                        : field === "email"
+                        ? "Your Email"
+                        : ""}
+                    </label>
+                  </>
+                ) : (
+                  <>
+                    <textarea
+                      name="message"
+                      placeholder=" "
+                      value={form.message}
+                      onChange={handleChange}
+                      required
+                      rows={5}
+                      id="contact-message"
+                    />
+                    <label htmlFor="contact-message">Your Message</label>
+                  </>
+                )}
+              </motion.div>
+            ))}
+            <motion.button
+              type="submit"
+              className="contact-btn"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.4 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              <span>Send Message</span>
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+                <path d="M5 12h14M13 5l7 7-7 7" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </motion.button>
+          </motion.form>
+        )}
+      </motion.div>
     </section>
   );
 };

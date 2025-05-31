@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 import HTMLIcon from "../assets/icons8-html-48.png";
 import CSS3 from "../assets/icons8-css-48.png";
 import canva from "../assets/icons8-canva-48.png";
@@ -22,7 +23,7 @@ const TopSkillsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(15, 15, 36, 0.9); /* Transparent background */
+  background-color: rgba(15, 15, 36, 0.9);
   color: white;
   padding: 30px 20px;
   position: relative;
@@ -30,25 +31,23 @@ const TopSkillsContainer = styled.div`
   width: 100vw;
 `;
 
-const SkillsGrid = styled.div`
+const SkillsGrid = styled(motion.div)`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 4fr)); /* Responsive columns */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 4fr));
   gap: 5px;
   justify-items: center;
   width: 100%;
 
- 
-    @media (min-width: 300px) and (max-width: 800px) {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(100px, 4fr)); /* Responsive columns */
-      gap: 10px;
-      justify-items: center;
-      width: 100%;
-      
-    }
+  @media (min-width: 300px) and (max-width: 800px) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 4fr));
+    gap: 10px;
+    justify-items: center;
+    width: 100%;
+  }
 `;
 
-const SkillIconWrapper = styled.div`
+const SkillIconWrapper = styled(motion.div)`
   position: relative;
   width: 120px;
   height: 120px;
@@ -60,26 +59,21 @@ const SkillIconWrapper = styled.div`
     visibility: visible;
     opacity: 1;
   }
-
-
 `;
 
-const SkillIcon = styled.img`
+const SkillIcon = styled(motion.img)`
   width: 60px;
   height: 60px;
   transition: transform 0.3s ease;
 
   &:hover {
-    transform: scale(1.2);
     cursor: pointer;
   }
-
-
 `;
 
 const Tooltip = styled.div`
   position: absolute;
-  bottom: 130%; /* Adjust tooltip positioning */
+  bottom: 130%;
   background-color: #333;
   color: #fff;
   padding: 5px 10px;
@@ -91,16 +85,15 @@ const Tooltip = styled.div`
   white-space: nowrap;
 `;
 
-const Title = styled.h2`
+const Title = styled(motion.h2)`
   font-size: 2rem;
-   color: #ebb222;
-     margin-bottom: 40px;
+  color: #ebb222;
+  margin-bottom: 40px;
 
   &:hover {
     color: #ff1493;
     cursor: pointer;
   }
-
 `;
 
 const skills = [
@@ -123,15 +116,65 @@ const skills = [
   { src: Github, alt: "GitHub" },
 ];
 
+const iconVariants = {
+  initial: { scale: 1, opacity: 0, y: 30 },
+  animate: { scale: 1, opacity: 1, y: 0, transition: { type: "spring", stiffness: 200 } },
+  whileHover: { scale: 1.2, rotate: 5 },
+  whileTap: { scale: 0.95 },
+};
+
+const gridVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+const titleVariants = {
+  hidden: { opacity: 0, y: -40 },
+  visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 120 } },
+  whileHover: { scale: 1.05, color: "#ff1493" },
+};
+
+const wrapperVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 180 } },
+};
+
 const TopSkills = () => {
   return (
     <section id="TopSkills">
       <TopSkillsContainer>
-        <Title>Top Skills</Title>
-        <SkillsGrid>
+        <Title
+          variants={titleVariants}
+          initial="hidden"
+          animate="visible"
+          whileHover="whileHover"
+        >
+          Top Skills
+        </Title>
+        <SkillsGrid
+          variants={gridVariants}
+          initial="hidden"
+          animate="visible"
+        >
           {skills.map((skill, index) => (
-            <SkillIconWrapper key={index}>
-              <SkillIcon src={skill.src} alt={skill.alt} />
+            <SkillIconWrapper
+              key={index}
+              variants={wrapperVariants}
+            >
+              <SkillIcon
+                src={skill.src}
+                alt={skill.alt}
+                variants={iconVariants}
+                initial="initial"
+                animate="animate"
+                whileHover="whileHover"
+                whileTap="whileTap"
+                transition={{ delay: index * 0.05 }}
+              />
               <Tooltip className="tooltip">{skill.alt}</Tooltip>
             </SkillIconWrapper>
           ))}

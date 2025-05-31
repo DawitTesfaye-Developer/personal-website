@@ -11,6 +11,8 @@ import TopSkills from './components/TopSkills';
 import Testimonials from './components/Testimonials';
 import CertificatePage from './components/CertificatePage.jsx'
 import Footer from './components/Footer.jsx';
+import WebsitesPortfolio from './components/websites/websites.jsx';
+import UIUXPortfolio from './components/UI.UX/uiux.jsx';
 
 const App = () => {
   return (
@@ -22,6 +24,8 @@ const App = () => {
           <About />
           <TopSkills />
           <Projects />
+          <WebsitesPortfolio/>
+          <UIUXPortfolio />
           {/* <Services /> */}
           <CertificatePage/>
           <Testimonials />
