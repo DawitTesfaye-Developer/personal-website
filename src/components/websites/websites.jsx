@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import "../css/website.css";
 
-// Example websites data (added more cards)
+// Example websites data
 const websites = [
     {
         title: "Portfolio Site",
@@ -69,24 +70,20 @@ const websites = [
     },
 ];
 
+const FILTERS = [
+    { label: "All", value: "all" },
+    { label: "Blog", value: "blog" },
+    { label: "Portfolio", value: "portfolio" },
+    { label: "Fullstack", value: "fullstack" }
+];
+
 // Tag component
 const Tag = ({ children }) => (
     <motion.span
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
-        style={{
-            display: "inline-block",
-            background: "linear-gradient(90deg, #ee9211%,rgb(74, 124, 32) 100%)",
-            color: "#fff",
-            borderRadius: "12px",
-            padding: "2px 12px",
-            fontSize: "12px",
-            marginRight: "8px",
-            marginBottom: "6px",
-            fontWeight: 500,
-            letterSpacing: "0.02em"
-        }}
+        className="website-tag"
     >
         {children}
     </motion.span>
@@ -99,57 +96,27 @@ const WebsiteCard = ({ website, idx }) => (
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: idx * 0.08, duration: 0.5, type: "spring" }}
         whileHover={{ scale: 1.04, boxShadow: "0 12px 36px 0 rgba(31,38,135,0.22)" }}
-        style={{
-            borderRadius: "18px",
-            overflow: "hidden",
-            margin: "16px",
-            width: "360px",
-            background: "rgba(255,255,255,0.95)",
-            boxShadow: "0 8px 32px 0 rgba(31,38,135,0.18)",
-            transition: "transform 0.2s, box-shadow 0.2s",
-            cursor: "pointer",
-            border: "1px solid rgba(200,200,200,0.15)",
-            backdropFilter: "blur(2px)",
-            position: "relative"
-        }}
+        className="website-card"
     >
-        <a href={website.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", color: "inherit" }}>
+        <a href={website.url} target="_blank" rel="noopener noreferrer" className="website-card-link">
             <motion.div
-                style={{ overflow: "hidden", height: "200px", position: "relative" }}
+                className="website-card-image-container"
                 whileHover={{ scale: 1.03 }}
                 transition={{ duration: 0.3 }}
             >
                 <img
                     src={website.image}
                     alt={website.title}
-                    style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                        transition: "transform 0.3s",
-                    }}
+                    className="website-card-image"
                 />
-                <div style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "100%",
-                    background: "linear-gradient(180deg,rgba(0,0,0,0.08) 0%,rgba(0,0,0,0.18) 100%)"
-                }} />
+                <div className="website-card-overlay" />
             </motion.div>
-            <div style={{ padding: "22px 20px 18px" }}>
+            <div className="website-card-content">
                 <motion.h3
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2 + idx * 0.08, duration: 0.4 }}
-                    style={{
-                        margin: "0 0 10px",
-                        color: "#FA812F",
-                        fontSize: "1.35rem",
-                        fontWeight: 700,
-                        letterSpacing: "-0.01em"
-                    }}
+                    className="website-card-title"
                 >
                     {website.title}
                 </motion.h3>
@@ -157,30 +124,18 @@ const WebsiteCard = ({ website, idx }) => (
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.25 + idx * 0.08, duration: 0.4 }}
-                    style={{
-                        margin: "0 0 16px",
-                        color: "#444",
-                        fontSize: "1rem",
-                        lineHeight: 1.6,
-                        minHeight: "48px"
-                    }}
+                    className="website-card-description"
                 >
                     {website.description}
                 </motion.p>
-                <div style={{ marginBottom: "14px" }}>
+                <div className="website-card-tags">
                     {website.tags && website.tags.map((tag, i) => <Tag key={i}>{tag}</Tag>)}
                 </div>
                 <motion.span
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.35 + idx * 0.08, duration: 0.3 }}
-                    style={{
-                        color: "#2563eb",
-                        fontWeight: 600,
-                        fontSize: "1rem",
-                        textDecoration: "underline",
-                        letterSpacing: "0.01em"
-                    }}
+                    className="website-card-link-text"
                 >
                     Visit Website &rarr;
                 </motion.span>
@@ -189,16 +144,8 @@ const WebsiteCard = ({ website, idx }) => (
     </motion.div>
 );
 
-const FILTERS = [
-    { label: "All", value: "all" },
-    { label: "Blog", value: "blog" },
-    { label: "Portfolio", value: "portfolio" },
-    { label: "fullstack", value: "fullstack" }
-];
-
 const WebsitesPortfolio = () => {
     const [filter, setFilter] = useState("all");
-
     const filteredWebsites =
         filter === "all"
             ? websites
@@ -209,32 +156,14 @@ const WebsitesPortfolio = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
-            style={{
-                minHeight: "100vh",
-                background: "rgba(15, 15, 36, 0.9)",
-                padding: "0",
-                fontFamily: "'Inter', 'Segoe UI', Arial, sans-serif"
-            }}
+            className="websites-portfolio"
         >
-            <div style={{
-                maxWidth: "1200px",
-                margin: "0 auto",
-                padding: "48px 24px 32px"
-            }}>
+            <div className="websites-container">
                 <motion.h2
                     initial={{ opacity: 0, y: -30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    style={{
-                        textAlign: "center",
-                        marginBottom: "40px",
-                        fontSize: "2.5rem",
-                        fontWeight: 800,
-                        letterSpacing: "-0.02em",
-                        background: "linear-gradient(90deg,rgb(219, 165, 16) 0%,rgb(237, 58, 142) 100%)",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent"
-                    }}
+                    className="websites-title"
                 >
                     Website Portfolio Showcase
                 </motion.h2>
@@ -242,12 +171,7 @@ const WebsitesPortfolio = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                    style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        gap: "18px",
-                        marginBottom: "36px"
-                    }}
+                    className="websites-filters"
                 >
                     {FILTERS.map(f => (
                         <motion.button
@@ -255,21 +179,7 @@ const WebsitesPortfolio = () => {
                             onClick={() => setFilter(f.value)}
                             whileTap={{ scale: 0.95 }}
                             whileHover={{ scale: 1.07 }}
-                            style={{
-                                gap: '100px',
-                                padding: "8px 22px",
-                                borderRadius: "18px",
-                                border: "none",
-                                background: filter === f.value
-                                    ? "linear-gradient(90deg,rgb(218, 108, 18) 0%,rgb(218, 124, 18) 100%)"
-                                    : "#e0e7ff",
-                                color: filter === f.value ? "#fff" : "#333",
-                                fontWeight: 600,
-                                fontSize: "1rem",
-                                cursor: "pointer",
-                                boxShadow: filter === f.value ? "0 2px 8px rgba(31,38,135,0.10)" : "none",
-                                transition: "all 0.18s"
-                            }}
+                            className={`filter-button ${filter === f.value ? 'active' : ''}`}
                         >
                             {f.label}
                         </motion.button>
@@ -286,12 +196,7 @@ const WebsitesPortfolio = () => {
                             }
                         }
                     }}
-                    style={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        justifyContent: "center",
-                        gap: "32px"
-                    }}
+                    className="websites-grid"
                 >
                     {filteredWebsites.map((website, idx) => (
                         <WebsiteCard website={website} key={idx} idx={idx} />

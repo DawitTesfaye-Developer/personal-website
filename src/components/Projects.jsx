@@ -6,7 +6,7 @@ import website from "../assets/fbi.png";
 import ux from "../assets/and2.jpg";
 import ux2 from "../assets/and3.jpg";
 import ux3 from "../assets/and4.jpg";
-import "../components/css/Testimonial.css";
+import "./css/project.css";
 
 const Projects = () => (
   <section id="projects" className="projects-section">
