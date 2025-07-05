@@ -14,7 +14,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const certificationsData = [
   { id: 1, title: 'Introduction to Frontend Development', provider: 'Coursera', imageUrl: meta_frontend },
-  { id: 2, title: 'Mobile Application Development', provider: 'Simpli Learn', imageUrl: Simpli_learn_mobile },
+  { id: 2, title: 'Mobile Application Development', provider: 'Simplilearn', imageUrl: Simpli_learn_mobile }, // changed
   { id: 3, title: 'Digital Marketing 101: Digital Marketer Beginners Guide', provider: 'Simplilearn', imageUrl: Digital_marketing },
   { id: 4, title: 'Frontend Development Libraries', provider: 'Freecodecamp', imageUrl: frontendCertificate },
   { id: 10, title: 'Amazon DocumentDB', provider: 'Simplilearn', imageUrl: AmazonDB },
@@ -24,7 +24,17 @@ const certificationsData = [
   { id: 9, title: 'Introduction to Frontend Development', provider: 'Simplilearn', imageUrl: Frontend_simplilearn },
 ];
 
-const providers = ['All', ...Array.from(new Set(certificationsData.map(c => c.provider)))];
+const providers = ['All', ...Array.from(new Set(certificationsData.map(c => c.provider.trim().toLowerCase())))
+  .map(provider => {
+    // Capitalize first letter and handle special cases
+    if (provider === 'simplilearn') return 'Simplilearn';
+    if (provider === 'freecodecamp') return 'Freecodecamp';
+    if (provider === 'coursera') return 'Coursera';
+    if (provider === 'udacity') return 'Udacity';
+    return provider.charAt(0).toUpperCase() + provider.slice(1);
+  })
+];
+
 
 function Certifications() {
   const [filter, setFilter] = useState('All');
