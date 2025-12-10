@@ -35,7 +35,7 @@
     "sass-loader": "^16.0.2",
     "style-loader": "^4.0.0",
     "styled-components": "^6.1.13",
-    "three": "^0.168.0",
+    "three": "^0.181.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
